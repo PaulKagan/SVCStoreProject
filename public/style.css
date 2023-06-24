@@ -1,4 +1,4 @@
-#mainDiv{
+/* #mainDiv{
 width: 500px;
 height: 500px;
 
@@ -12,12 +12,7 @@ height: 500px;
      
 }
 
-#productDiv{
 
-    width: 300px;
-    height: 400px;
-     
-}
 
 #approveDiv{
 
@@ -25,4 +20,152 @@ height: 500px;
     width: 300px;
 
 
+} */
+
+/* //////////////////////// sign up syle */
+#signUpDiv{
+    width: 400px;
+    height: 600px;
+    background-color: lightblue;
+    margin: 20px auto;
+    
 }
+#item{
+    width: 375px;
+    height: 575px;
+    background-color: white;
+    position: relative;
+    top: 12px;
+    left: 12px;
+}
+#details{
+    width: 325px;
+    height: 525px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.common{
+    width: 125px;
+    height: 40px;
+    border-style: none;
+    padding: 0;
+    background-color: lightgray;
+}
+
+
+.info{
+    background-color: lightgray;
+    border-style: none;
+    width: 275px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+input::placeholder{
+    padding: 5px;
+}
+
+#checkline{
+    display: inline;
+}
+
+
+button{
+    margin-top: 30px;
+    height: 40px;
+    width: 125px;
+    background-color: lightblue;
+    border-style: none;
+    color: white;
+}
+/* //////////////////////////////////////////////  end of sign up*/
+
+
+
+
+/* ///////////////////////////////////////////// sign in style  */
+
+#signIn{
+    height: 500px;
+    width: 500px;
+    background-color: lightblue;
+    margin: 20px auto;
+}
+
+#item{
+    background-color: white;
+    height: 450px;
+    width: 450px;
+    border-radius: 20px;
+    position: relative;
+    left: 25px;
+    top: 25px;
+}
+
+#inner{
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    left: 50px;
+}
+
+#header{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.smallHeader{
+    margin-bottom: 10px;
+}
+
+#remember{
+    display: inline;
+}
+
+.inputs{
+    height: 30px;
+    width: 350px;
+    border: 1px solid lightgray;
+    padding: 0;
+}
+
+.inputs::placeholder{
+    padding-left:10px ;
+}
+
+#submit{
+    width: 350px;
+    height: 30px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+}
+
+#submit:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+#submit:active{
+    background-color: blue;
+}
+
+#forgot{
+    text-align: right;
+    
+}
+
+/* ///////////////////////////////////////// end of sign In */
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,33 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
+    <!DOCTYPE html>
+    <html >
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VS Shop</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+        
     <div id="signUpDiv">
-        <form action="/signup" method="post"></form>
-        <input type="text" placeholder="Name" name="usersName" id="">
-        <input type="text" placeholder="Email" name="email" id="">
-        <input type="text" placeholder="Password" name="Password" id="">
-
-
-        <button onclick="">Sign-up</button>
+        <div id="item">
+            <div id="details">
+                <h2>Sign up to SV-shop!</h2>
+                <p id="chat">Please fill in this form to create an account!</p>
+                <hr id="line">
+                <!-- <form> -->
+                    <input class="info" type="text" placeholder="User name" name="userName" id="userName">
+                    <input class="info" type="text" placeholder="Email" name="email" id="email">
+    
+                    <input class="info" type="password" placeholder="Password" name="password" id="password">
+                    <i class="far fa-eye" id="togglePassword" onclick="showPass()"
+                        style="margin-left: -30px; cursor: pointer;"></i>
+    
+                    <input class="info" type="password" placeholder="Confirm Password" name="confirmPass" id="confirmPass">
+                    <i class="far fa-eye" id="togglePassword" onclick="showCPass()"
+                        style="margin-left: -30px; cursor: pointer;"></i>
+                    <br><br>
+    
+                    <input type="checkbox">
+                    <p id="checkline"> I accept the <a href="http://localhost:3000/tos.html">Term of use</a> & <a
+                            href="">Privecy policy</a></p>
+                    <button id="button" onclick="return signup()">Sign up</button>
+                    <!-- <input type="submit" value="Sign up" id="button"> -->
+                <!-- </form> -->
+            </div>
+        </div>
     </div>
-
-
-
-
-
-
-
-
-
-</body>
-
-</html>
+    
+    <script src="script.js"></script>
+    </body>
+    </html>
