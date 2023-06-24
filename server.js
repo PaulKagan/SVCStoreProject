@@ -94,7 +94,7 @@ app.post('/signup', async (req, res) => {
       console.log("redirect");
       // res.setHeader("Content-Type", "text/html");
       // res.redirect(200,'/home');
-      //! redirect suddenly isnt working.
+      //! redirect suddenly isnt working..
     }).catch((err) => console.log(err)); 
   }
 
