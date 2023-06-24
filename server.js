@@ -77,6 +77,22 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
+  const user = {
+    userName: req.body.usersName,
+    email: req.body.email,
+    password: req.body.password
+  };
+  await userModel.findOne({userName: user.userName})
+  .then((existing)=>{   
+    if (existing != undefined || existing != null) {
+      alert('User exists');
+      return;
+    }
+  });
+
+  await userModel.create(user).then(() => {
+    res.redirect(__dirname + '/public/home.html');
+  }).catch(console.log(err));
   console.log('dummy');
 });
 
@@ -95,8 +111,8 @@ app.post('/products', async (req, res) =>{
 
 // All page
 
-app.get('/all', (req, res) => {
-  res.sendFile(__dirname + '/public/all.html');
+app.get('/home', (req, res) => {
+  res.sendFile(__dirname + '/public/home.html');
 });
 
 app.post('/all', async (req, res) =>{
