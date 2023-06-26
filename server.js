@@ -3,6 +3,7 @@ const bp = require('body-parser');
 const db = require('mongoose');
 const app = express();
 
+let signedin = false;
 
 // Setting up server config.
 
@@ -76,28 +77,21 @@ app.get('/signup', (req, res) => {
   res.sendFile(__dirname + '/public/signup.html');
 });
 
+//! add check if signed in 
 app.post('/signup', async (req, res) => {
   const user = {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password
   };
-  console.log("1. user: "+user.userName + " " + user.email + " " + user.password);
   const existing = await userModel.findOne({email: user.email});
-  console.log("existing: "+existing);
   if (existing != null) {
-    console.log('User exists');
     res.json({message: 'User already exists!'});
   } else {
-    console.log('no such user');
     await userModel.create(user).then(() => {
-      console.log("redirect");
-      // res.setHeader("Content-Type", "text/html");
-      // res.redirect(200,'/home');
-      //! redirect suddenly isnt working..
+      res.json({url: '/'});
     }).catch((err) => console.log(err)); 
   }
-
 });
 
 
@@ -119,7 +113,7 @@ app.get('/home', (req, res) => {
   res.sendFile(__dirname + '/public/home.html');
 });
 
-app.post('/all', async (req, res) =>{
+app.post('/home', async (req, res) =>{
   console.log('dummy');
 });
 
