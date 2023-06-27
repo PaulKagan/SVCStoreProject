@@ -1,6 +1,7 @@
 const express = require('express');
 const bp = require('body-parser');
 const db = require('mongoose');
+const emailValidator = require('email-validator');//should we do custom one in the front?
 const app = express();
 
 let signedin = false;
@@ -84,13 +85,17 @@ app.post('/signup', async (req, res) => {
     email: req.body.email,
     password: req.body.password
   };
-  const existing = await userModel.findOne({email: user.email});
-  if (existing != null) {
-    res.json({message: 'User already exists!'});
+  if (!emailValidator.validate(user.email)) {
+    res.json({message: 'Please enter correct email address.', isCorrect: false});
   } else {
-    await userModel.create(user).then(() => {
-      res.json({url: '/'});
-    }).catch((err) => console.log(err)); 
+    const existing = await userModel.findOne({email: user.email});
+    if (existing != null) {
+      res.json({message: 'User already exists!', isExists : true});
+    } else {
+      await userModel.create(user).then(() => {
+        res.json({url: '/', isExists: false, isCorrect: true});
+      }).catch((err) => console.log(err)); 
+    }
   }
 });
 
