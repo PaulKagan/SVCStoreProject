@@ -3,7 +3,7 @@ const signup = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const confirmPass = document.getElementById("confirmPass").value;
-  const agree = document.getElementById("agree").checked;
+  const agree = document.getElementById("b").checked;
 
   if (!agree) {
     alert('Please agree to TOS & PP.')
