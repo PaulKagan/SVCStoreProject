@@ -1,26 +1,3 @@
-/* #mainDiv{
-width: 500px;
-height: 500px;
-
-}
-
-
-#signUpDiv{
-
-    width: 500px;
-    height: 500px;
-     
-}
-
-
-
-#approveDiv{
-
-    height: 400px;
-    width: 300px;
-
-
-} */
 
 /* //////////////////////// sign up syle */
 #signUpDiv{
@@ -28,16 +5,18 @@ height: 500px;
     height: 600px;
     background-color: lightblue;
     margin: 20px auto;
+    position: relative;
     
 }
-#item{
+#items{
     width: 375px;
     height: 575px;
     background-color: white;
-    position: relative;
     top: 12px;
     left: 12px;
+    position: absolute;
 }
+
 #details{
     width: 325px;
     height: 525px;
@@ -72,13 +51,21 @@ input::placeholder{
 }
 
 
-button{
+#button{
     margin-top: 30px;
     height: 40px;
     width: 125px;
     background-color: lightblue;
     border-style: none;
     color: white;
+}
+
+#button:hover{
+    cursor: pointer;
+    background-color: green;
+}
+#button:active{
+    background-color: blue;
 }
 /* //////////////////////////////////////////////  end of sign up*/
 
@@ -138,7 +125,7 @@ button{
 #submit{
     width: 350px;
     height: 30px;
-    background-color: lightblue;
+    background-color: rgb(0, 105, 21);
     border: none;
     border-radius: 5px;
 }
@@ -158,12 +145,391 @@ button{
 
 /* ///////////////////////////////////////// end of sign In */
 
+/* //////////////////////////////////////////// forgot password page */
+
+
+#forgotDiv{
+
+
+    width: 500px;
+    height: 400px;
+    background-color: rgb(106, 195, 224);
+    margin: 20px auto;
+    position: relative;
+    
+}
+
+#innerF{
+    margin-left: 30px;
+    margin-top: 10px;
+    justify-items: auto;
+    width: 350px;
+    height: 300px;
+    background-color: white;
+    top: 12px;
+    left: 12px;
+    position: absolute;
+    padding-left: 55px;
+    padding-top: 50px;
+}
+
+#product-list{
+    height: 90VH;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+
+.productDiv{   /*  //for products */
+    width: 300px;
+    height: 300px;
+    border: 1px black solid;
+    background-size: cover;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.prod-top{
+    display: none;
+    color:white;
+    height: 0px;
+    background-image: linear-gradient(rgb(0, 0, 0), rgba(71, 71, 71, 0.8));
+    transition: height 1s linear;
+}
+.prod-buttom{
+    height: 0px;
+    display: none;
+    margin-top: auto;
+    background-color: rgb(84, 4, 4);
+    color: white;
+    border: none;
+}
+
+.productDiv:hover > *{
+    display: block;
+    height: 20px;
+    transition: height 1s linear;
+}
 
 
 
 
 
 
+
+/* paul */
+
+body{
+    margin: 0px;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Nav-bar */
+/* General settings */
+nav{
+    background-color: #343A40;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-items, .dropdown-content{
+    text-decoration: none;
+    color: white;
+    padding: 6px 20px;
+}
+#home:hover, #link:hover, #dropdown-btn:hover{
+    background-image: linear-gradient(#343A40,#464d53);
+}
+
+/* Specific settings */
+/* Nav logo */
+#logo{
+    font-size: large;
+    background-image: none;
+}
+
+/* Link button */
+#link{
+    color: rgb(179, 176, 176);
+}
+#link:hover{
+    color: white;
+}
+
+/* The disabled button */
+#disabled{
+    color: rgb(90, 90, 90);
+    pointer-events: none;
+}
+
+/* Drop down btn & its contents */
+#drop-container{
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown-btn{
+    color: rgb(179, 176, 176);
+    background-color: #343A40;
+    border-style: none;
+    height: 100%;
+}
+
+#dropdown{
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 60%;
+    background-color: #343A40;
+    display: none;
+    position: absolute;
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.dropdown-content{
+    color: rgb(90, 90, 90);
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: 50%;
+    transform: translate(-20%);
+}
+
+#drop-container:hover #dropdown{
+    display: block;
+}
+
+.dropdown-content:hover{
+    color: white;
+    background-image: linear-gradient(#464d53,#343A40,#464d53);
+}
+
+/* Search bar & btn */
+
+#search-bar{
+    color: black;
+    border-style: none;
+    margin-left: auto;
+    font-size: small;
+    padding: 3px 20px;
+    height: 90%;
+    transform: translate(0, 25%);
+    border-radius: 3px;
+}
+
+
+
+
+#search-button{
+    color: #2D7041;
+    background-color: #343A40;
+    border-radius: 3px;
+    border: 1px solid #2D7041;
+    padding: 3px 5px; 
+    height: 90%;
+    margin: 0px 5px;
+    transform: translate(0, 18%);
+}
+
+/* Page content--------------------------------------------*/
+#content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Jumbotron */
+#jumbotron{
+    background-color: #E9ECEF;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 45%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+#jumbotron > *{
+    width: 60%;
+}
+
+h1{
+    margin-bottom: 0;
+    font-size: 50px;
+    font-weight: 100 !important;
+    
+}
+
+p{
+    font-size: 11.35px;
+}
+
+#learn-more{
+    width: 10%;
+    margin-right: 50%;
+    padding: 10px 0px;
+    color: white;
+    background-color: #007BFF;
+    border-style: none;
+    border-radius: 3px;
+}
+
+/* Support pieces. */
+
+#support{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: center;
+    gap: 3%;
+}
+
+.piece{
+    width: 30%;
+}
+
+h3{
+    margin-bottom: 0;
+}
+
+.piece > p {
+    margin-top: 3px;
+}
+
+.sup-btn{
+    color: white;
+    background-color: #6C757D;
+    font-size: x-small;
+    border-style: none;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+hr{
+    border-top: 1px solid #E9ECEF;
+    width: 60%;
+}
+/* ----------mobile------------------------- */
+
+#hamburger-container{
+    display: none;
+}
+
+#search-bar-mob{
+    color: black;
+    border-style: none;
+    margin-left: auto;
+    font-size: small;
+    padding: 3px 20px;
+    height: 90%;
+    transform: translate(0, 25%);
+    border-radius: 3px;
+}
+
+
+
+@media(max-width:768px){
+    .nav-items{
+        display: none;
+    }
+    #logo{
+        display: inline;
+    }
+
+/* Start of this hellish hamburger! and no copy paste was done :) */
+    #hamburger-container{
+        display: block;
+        margin-left: auto;
+        margin-right: 5px;
+    }
+    
+    #menu-items{
+        display: none;
+    }
+/* actually its the container of the spans..  */
+    #hamburger-lines{
+
+        position: relative;
+        display: inline;
+        padding: 3px 7px;
+        border: 1px solid #6C757D;
+        border-radius: 3px;
+        width: 90%;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    input[type="checkbox"]{
+        position: absolute;
+        padding: 5px;
+        height: 105%;
+        width: 105%;
+        transform: translate(-34.65%,-35%);
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+    /* span */
+    .line{
+        display: block;
+        width: 85%;
+        border: 0.75px solid #6C757D;
+        margin: 1px;
+        
+    }
+
+    /* Behold!!!! - the magic! */
+    .nav-items
+    input[type="checkbox"]:checked ~ #menu-items{
+        background-color: rebeccapurple;
+        display: block;
+        position: absolute;
+        height: 10px;
+        width:10px;
+        transform: translate(-500%,225%);
+    }
+
+    .dropdown-content{
+        background-color: #343A40;
+        color: #6C757D;
+        width: 675%;
+        padding: 20px;
+    }
+
+    #disabled-mob{
+        color: rgb(90, 90, 90);
+        pointer-events: none;
+    }
+
+    /* welp, its an ok magic.
+    wanted to make animation.. but ain't no body got time for that*/
+
+    
+    /* ----Page content----------------- */
+    #learn-more{
+        width: 25%;
+        transform: translate(30%);
+    }
+
+    #support{
+        flex-direction: column;
+    }
+
+    .piece{
+        width: 90%;
+    }
+
+}
 
 
 

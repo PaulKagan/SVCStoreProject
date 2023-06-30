@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+        <!-- navbar -->
+        <nav>
+            <div id="logo" class="nav-items">Navbar</div>
+            <!-- big screen..? full screen..? -->
+            <a href="" id="home" class="nav-items">Home</a>
+            <a href="" id="link" class="nav-items">Link</a>
+            <a href="" id="disabled" class="nav-items">Disabled</a>
+            <div id="drop-container">
+                <button id="dropdown-btn" class="nav-items">Dropdown</button>
+                <div id="dropdown" class="nav-items">
+                    <a href="" class="dropdown-content">1</a>
+                    <a href="" class="dropdown-content">2</a>
+                    <a href="" class="dropdown-content">3</a>
+                </div>
+            </div>
+            <input type="search" name="" id="search-bar" class="nav-items" placeholder="Search">
+            <!-- <input type="submit" id="search-button" class="nav-items" value="Search"> -->
+            <button onclick="sortItemsByName()" type="submit" id="search-button" class="nav-items" value="Search">Search</button>
+         </nav>
+
+    <h1>Welcome to SV-clothing shop!</h1>
+
+    <button onclick="sortItemsByPrice()">sort by price</button>
+    <input type="radio" name="radio">min
+    <input type="radio" name="radio">max
     
 
-    <div id="productDiv">
-
-        <div></div>
-        <div></div>
-        <div></div>
-
-
-        <button onclick="">Buy</button>
-
-
-    </div>
+    <div id="product-list"></div>
 
 
 
 
 
 
+
+    <script src="product-script.js"></script>
     <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -18,16 +18,20 @@
             
             <div id="inner"> 
                 <h3 class="smallHeader"> Email Address:</h3>
-                <input class="inputs" type="text" placeholder="Enter Email">
+                <input class="inputs" type="text" placeholder="Enter Email" id="email">
                 <h3 class="smallHeader"> Password</h3>
 
                 <input class="inputs" type="password" placeholder="Enter password" id="enteredPass">
                 <i class="far fa-eye" id="togglePassword" onclick="showEPass()"></i>show password <br><br>
 
                 <input type="checkbox">
-                <p id="remember">Remember me</p> <br><br>
-                <button id="submit">Submit</button>
-                <p id="forgot">Forgot  <a href="#">password?</a></p>
+                <p id="remember">Remember me</p> <br>
+                <button id="submit" onclick="return signIn()">Submit</button><br>
+                
+
+                <p id="signUpbtn">dont have a user? please <a href="signup.html">sign up!</a>
+
+                <p id="forgot">Forgot  <a href="forgot.html">password?</a></p>
             </div>
 
         </div>
