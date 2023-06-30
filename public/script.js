@@ -30,10 +30,10 @@ const signup = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (!data.isCorrect) {
+        if (data.mailIsIncorrect) {
           alert(data.message);
           return false;
-        } else if (data.isExists) {
+        } else if (data.userExists) {
           alert(data.message);
           return false;
         } else{

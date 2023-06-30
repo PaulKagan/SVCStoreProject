@@ -4,7 +4,8 @@ const db = require('mongoose');
 const emailValidator = require('email-validator');//should we do custom one in the front?
 const app = express();
 
-let signedin = false;
+let user = "blah";//! change to null!!
+// let signedin = false;
 
 // Setting up server config.
 
@@ -63,11 +64,15 @@ const orderModel = db.model('order', orderSchema);
 // Sign in page
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-  console.log('hello');
+  if (user == null) {
+    res.sendFile(__dirname + "/public/index.html");
+  } else {
+    res.redirect('/products')
+  }
 });
 
 app.post('/', async (req, res) => {
+  //! Mishel
   console.log('dummy');
 })
 
@@ -75,10 +80,13 @@ app.post('/', async (req, res) => {
 // Sign up page
 
 app.get('/signup', (req, res) => {
-  res.sendFile(__dirname + '/public/signup.html');
+  if (user == null) {
+    res.sendFile(__dirname + '/public/signup.html');
+  } else {
+    res.redirect('/products');
+  }
 });
 
-//! add check if signed in 
 app.post('/signup', async (req, res) => {
   const user = {
     userName: req.body.userName,
@@ -86,25 +94,30 @@ app.post('/signup', async (req, res) => {
     password: req.body.password
   };
   if (!emailValidator.validate(user.email)) {
-    res.json({message: 'Please enter correct email address.', isCorrect: false});
+    res.json({message: 'Please enter correct email address.', mailIsIncorrect: true});
   } else {
     const existing = await userModel.findOne({email: user.email});
     if (existing != null) {
-      res.json({message: 'User already exists!', isExists : true});
+      res.json({message: 'User already exists!', mailIsIncorrect: false, userExists : true});
     } else {
       await userModel.create(user).then(() => {
-        res.json({url: '/', isExists: false, isCorrect: true});
+        res.json({url: '/', mailIsIncorrect: false, userExists: false});
       }).catch((err) => console.log(err)); 
     }
   }
 });
 
 
-//? Michell, why do we have products page and all page? what is the difference?
+
 // Producs page
 
-app.get('/products', (req, res) => {
-  res.sendFile(__dirname + '/public/products.html');
+app.get('/products', async (req, res) => {
+  if (user == null) {
+    res.redirect('/');
+  } else {
+    
+    res.sendFile(__dirname + '/public/products.html');
+  }
 });
 
 app.post('/products', async (req, res) =>{
@@ -114,11 +127,11 @@ app.post('/products', async (req, res) =>{
 
 // All page
 
-app.get('/home', (req, res) => {
-  res.sendFile(__dirname + '/public/home.html');
+app.get('/all', (req, res) => {
+  res.sendFile(__dirname + '/public/all.html');
 });
 
-app.post('/home', async (req, res) =>{
+app.post('/all', async (req, res) =>{
   console.log('dummy');
 });
 
