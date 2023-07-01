@@ -11,29 +11,28 @@
 <body>
         <!-- navbar -->
         <nav>
-            <div id="logo" class="nav-items">Navbar</div>
-            <!-- big screen..? full screen..? -->
-            <a href="" id="home" class="nav-items">Home</a>
-            <a href="" id="link" class="nav-items">Link</a>
-            <a href="" id="disabled" class="nav-items">Disabled</a>
-            <div id="drop-container">
-                <button id="dropdown-btn" class="nav-items">Dropdown</button>
-                <div id="dropdown" class="nav-items">
-                    <a href="" class="dropdown-content">1</a>
-                    <a href="" class="dropdown-content">2</a>
-                    <a href="" class="dropdown-content">3</a>
-                </div>
-            </div>
+            <div id="logo" class="nav-items">SVShop</div>
+            <a id="home" class="nav-items" src="/products">Home</a>
+            <button id="cart-button" class="nav-items" onclick="displayLilCart()">Cart</button>
+            <span id="empty"></span>
             <input type="search" name="" id="search-bar" class="nav-items" placeholder="Search">
-            <!-- <input type="submit" id="search-button" class="nav-items" value="Search"> -->
-            <button onclick="sortItemsByName()" type="submit" id="search-button" class="nav-items" value="Search">Search</button>
+
+           
          </nav>
+        <div id="welcomHeader">
+      <h1>Welcome to SV-clothing shop!</h1>
+    </div>
+    
+    <select id="sortBox">
+        <option value="default">Sort by</option>
+        <option onclick="sortItemsByPrice()" value="lowToHigh">Price: Low to High</option>
+        <option onclick="sortItemsByPrice()" value="highToLow">Price: High to Low</option>
+      </select>
+      
+      <div id="productContainer">
+        <!-- Product items will be dynamically added here -->
+      </div>
 
-    <h1>Welcome to SV-clothing shop!</h1>
-
-    <button onclick="sortItemsByPrice()">sort by price</button>
-    <input type="radio" name="radio">min
-    <input type="radio" name="radio">max
     
 
     <div id="product-list"></div>
@@ -46,6 +45,7 @@
 
     <script src="product-script.js"></script>
     <script src="script.js"></script>
+    <script src="cart-script.js"></script>
 
 </body>
 

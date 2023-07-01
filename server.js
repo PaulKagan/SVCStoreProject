@@ -17,6 +17,7 @@ app.use(bp.json())
 
 app.use(express.static("images")); //pavel is that supposed to import the images?
 
+
 app.use(
   session({
     secret: 'Shhhhh.....!', //! Replace with secret key from stripe?
@@ -64,7 +65,8 @@ const productModel = db.model('product', productSchema);
 const orderSchema = db.Schema({
   totalProducts: Number,
   totalPrice: Number,
-  costumerName: String //? we need to figure out if this suposed to be an obj.
+  usersName: String, //? we need to figure out if this suposed to be an obj.
+  usersEmail: String
 });
 
 const orderModel = db.model('order', orderSchema);
@@ -142,16 +144,15 @@ app.get('/showProducts',async(req,res) => {
 
   const productPull = await productModel.find({})
   res.json({productList: productPull});
-  // console.log(productPull);
 })
 
 app.get('/products', async (req, res) => {
   // if (req.session.user == null) {
   //   res.redirect('/');
   // } else {
-    
+  
     res.sendFile(__dirname + '/public/products.html');
-  // }
+    // }
 });
 
 app.post('/products', async (req, res) =>{
@@ -159,19 +160,67 @@ app.post('/products', async (req, res) =>{
 });
 
 
+////////////////////////////////////////////////////////////////////////////////
+// function middleware(req,res,next){
+//   if(req.query.admin == 'true')
+//   next();
+//   else{
+//     res.status(400).send('ERROR!');
+//   }
+//   console.log('middleware works') ;
+// }
+  
+
+////////////////////////////////////////////////////////////////////////////////
+
+
 // All page
+// app.use(middleware);
 
-// app.get('/all', (req, res) => {
-//   res.sendFile(__dirname + '/public/all.html');
+app.get('/all', (req, res) => {
+  res.sendFile(__dirname + '/public/all.html');
+});
+
+app.post('/all', async (req, res) =>{
+  console.log('dummy');
+});
+
+
+/////////////////////////////////////////////////
+
+app.get('/showOrders',async(req,res) => {
+
+  const orderPull = await orderModel.find({})
+  res.json({orderList: orderPull});
+})
+// app.get('/testOrders', async (req,res) => {
+
+// const ordersHistory = [
+// {totalProducts: 5, totalPrice: 1200, usersName:"mish",usersEmail:"mish@4gmail.com"},
+// {totalProducts: 6, totalPrice: 1000, usersName:"mike",usersEmail:"mike@3walla.com"},
+// {totalProducts: 2, totalPrice: 120, usersName:"pavel",usersEmail:"pavel@2gmail.com"},
+// {totalProducts: 1, totalPrice: 250, usersName:"paul" ,usersEmail:"paul@1walla.com"},
+// ]
+
+// await orderModel.insertMany(ordersHistory);
+
 // });
-
-// app.post('/all', async (req, res) =>{
-//   console.log('dummy');
-// });
-
+///////////////////////////////////////////////////////
 
 // checkout page
+
+
+
+
+
 //? I assume buy was supposed to be the checkout page?
+
+
+
+
+
+
+
 
 app.get('/buy', (req, res) => {
 
@@ -285,6 +334,4 @@ app.listen(3000, () => {
 // (‘/buy’) לחיצה על כפתור קניה, תעביר את המשתמש לעמוד הרכישה :
 
 // קיים ערוץ נוסף (‘/all’):
-
-
 
