@@ -22,9 +22,13 @@ app.use(
   session({
     secret: 'Shhhhh.....!', //! Replace with secret key from stripe?
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie:{
+      maxAge: 60*60*1000,
+    }
   })
 );
+
 // Setting up DB.
 
 // const url = "mongodb+srv://mishrb20:mishrb20@cluster0.9t512bo.mongodb.net/SVshop";
@@ -147,55 +151,28 @@ app.get('/showProducts',async(req,res) => {
 })
 
 app.get('/products', async (req, res) => {
-  // if (req.session.user == null) {
-  //   res.redirect('/');
-  // } else {
+  if (req.session.user == null) {
+    res.redirect('/');
+  } else {
   
     res.sendFile(__dirname + '/public/products.html');
-    // }
+    }
 });
 
-app.post('/products', async (req, res) =>{
-  console.log('dummy');
-});
+// app.post('/products', async (req, res) =>{
+//   console.log('dummy');
+// });
 
 
-////////////////////////////////////////////////////////////////////////////////
-// function middleware(req,res,next){
-//   if(req.query.admin == 'true')
-//   next();
-//   else{
-//     res.status(400).send('ERROR!');
-//   }
-//   console.log('middleware works') ;
-// }
-  
-
-////////////////////////////////////////////////////////////////////////////////
-
-
-// All page
-// app.use(middleware);
-
-app.get('/all', (req, res) => {
-  res.sendFile(__dirname + '/public/all.html');
-});
-
-app.post('/all', async (req, res) =>{
-  console.log('dummy');
-});
-
-
-/////////////////////////////////////////////////
 
 app.get('/showOrders',async(req,res) => {
-
+  
   const orderPull = await orderModel.find({})
   res.json({orderList: orderPull});
 })
 // app.get('/testOrders', async (req,res) => {
-
-// const ordersHistory = [
+  
+  // const ordersHistory = [
 // {totalProducts: 5, totalPrice: 1200, usersName:"mish",usersEmail:"mish@4gmail.com"},
 // {totalProducts: 6, totalPrice: 1000, usersName:"mike",usersEmail:"mike@3walla.com"},
 // {totalProducts: 2, totalPrice: 120, usersName:"pavel",usersEmail:"pavel@2gmail.com"},
@@ -209,31 +186,31 @@ app.get('/showOrders',async(req,res) => {
 
 // checkout page
 
-
-
-
-
-//? I assume buy was supposed to be the checkout page?
-
-
-
-
-
-
-
-
 app.get('/buy', (req, res) => {
-
+  
   if (req.session.user == null) {
     res.redirect('/');
   } else {
     res.sendFile(__dirname + '/public/buy.html');
   }
-
+  
 });
 
 app.post('/buy', async (req, res) =>{
   console.log('dummy');
+  const user = req.session.user;
+  const order = {
+    totalProducts: req.body.totalProducts,
+    totalPrice: req.body.totalPrice,
+    usersName: user.userName,
+    usersEmail: user.email
+  }
+
+  await orderModel.create(order).then(() => {
+    res.json({message:"Order sent."})
+  })
+  
+  
 });
 
 
@@ -242,9 +219,38 @@ app.post('/buy', async (req, res) =>{
 
 app.get('/tos',(req,res) => {
   res.sendFile(__dirname + '/public/tos.html')
+  
 })
 
 
+////////////////////////////////////////////////////////////////////////////////
+function middleware(req,res,next){
+  if(req.query.admin == 'true')
+  next();
+  else{
+    res.status(400).send('ERROR!');
+  }
+  console.log('middleware works') ;
+}
+  
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+// All page
+
+app.use(middleware);
+
+app.get('/all', (req, res) => {
+  res.sendFile(__dirname + '/public/all.html');
+});
+
+app.post('/all', async (req, res) =>{
+  console.log('dummy');
+});
+
+
+/////////////////////////////////////////////////
 
 
 
@@ -252,9 +258,9 @@ app.get('/tos',(req,res) => {
 
 
 // app.get('/addProducts', async (req,res) => {
-
-// const products =
-// [
+  
+  // const products =
+  // [
 
 //   {productName:"Zara shirt", productPrice: 110, image:"http://t1.gstatic.com/images?q=tbn:ANd9GcTSUHCNcaXbt9OyWqUclRptJ_9MXv1kOs6leECCh8a-gN9lDonm"  },
 // {productName:"Gucci shirt", productPrice:650 , image:"https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1686932239/565806_XJAZY_9037_001_100_0000_Light-T-shirt-with-Gucci-Blade-print.jpg"},

@@ -13,7 +13,7 @@
         <nav>
             <div id="logo" class="nav-items">SVShop</div>
             <a id="home" class="nav-items" src="/products">Home</a>
-            <button id="cart-button" class="nav-items" onclick="displayLilCart()">Cart</button>
+            <button id="cart-button" class="nav-items" onclick="getLilCart()">Cart</button>
             <span id="empty"></span>
             <input type="search" name="" id="search-bar" class="nav-items" placeholder="Search">
 
@@ -22,13 +22,14 @@
         <div id="welcomHeader">
       <h1>Welcome to SV-clothing shop!</h1>
     </div>
-    
+
+    <div id="sortDiv">
     <select id="sortBox">
         <option value="default">Sort by</option>
         <option onclick="sortItemsByPrice()" value="lowToHigh">Price: Low to High</option>
         <option onclick="sortItemsByPrice()" value="highToLow">Price: High to Low</option>
       </select>
-      
+    </div>
       <div id="productContainer">
         <!-- Product items will be dynamically added here -->
       </div>
