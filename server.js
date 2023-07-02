@@ -2,12 +2,11 @@ const express = require('express');
 const session = require('express-session');
 const bp = require('body-parser');
 const db = require('mongoose');
-const emailValidator = require('email-validator');//should we do custom one in the front?
+const emailValidator = require('email-validator');
 const app = express();
 
-// let user = null;//! change to null!!
-// let signedin = false;
 
+// __________________________________________________________________________________________________________
 // Setting up server config.
 
 
@@ -20,7 +19,7 @@ app.use(express.static("images")); //pavel is that supposed to import the images
 
 app.use(
   session({
-    secret: 'Shhhhh.....!', //! Replace with secret key from stripe?
+    secret: 'Shhhhh.....!', //? Replace with secret key from stripe? //? nope, aint nobody got time for that.
     resave: false,
     saveUninitialized: true,
     cookie:{
@@ -29,6 +28,7 @@ app.use(
   })
 );
 
+// ________________________________________________________________________________________________________
 // Setting up DB.
 
 // const url = "mongodb+srv://mishrb20:mishrb20@cluster0.9t512bo.mongodb.net/SVshop";
@@ -42,7 +42,7 @@ db.connect(url)
     console.log(err);
   });
 
-
+// ____________________________________________________________________________________________________
 // Setting up schemas and models.
 
 const userSchema = db.Schema({
@@ -75,8 +75,8 @@ const orderSchema = db.Schema({
 
 const orderModel = db.model('order', orderSchema);
 
-// Server 
-
+// ----Server------------- 
+// ________________________________________________________________________________________________________________
 // Sign in page
 
 app.get('/', (req, res) => {
@@ -109,7 +109,7 @@ app.post('/', async (req, res) => {
   }
 });
 
-
+// _________________________________________________________________________________________________________________
 // Sign up page
 
 app.get('/signup', (req, res) => {
@@ -140,8 +140,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-
-
+// ____________________________________________________________________________________________________________
 // Producs page
 
 app.get('/showProducts',async(req,res) => {
@@ -165,26 +164,9 @@ app.get('/products', async (req, res) => {
 
 
 
-app.get('/showOrders',async(req,res) => {
-  
-  const orderPull = await orderModel.find({})
-  res.json({orderList: orderPull});
-})
-// app.get('/testOrders', async (req,res) => {
-  
-  // const ordersHistory = [
-// {totalProducts: 5, totalPrice: 1200, usersName:"mish",usersEmail:"mish@4gmail.com"},
-// {totalProducts: 6, totalPrice: 1000, usersName:"mike",usersEmail:"mike@3walla.com"},
-// {totalProducts: 2, totalPrice: 120, usersName:"pavel",usersEmail:"pavel@2gmail.com"},
-// {totalProducts: 1, totalPrice: 250, usersName:"paul" ,usersEmail:"paul@1walla.com"},
-// ]
 
-// await orderModel.insertMany(ordersHistory);
-
-// });
-///////////////////////////////////////////////////////
-
-// checkout page
+//________________________________________________________________________________________________________________
+// Checkout/buy page
 
 app.get('/buy', (req, res) => {
   
@@ -205,67 +187,76 @@ app.post('/buy', async (req, res) =>{
     usersName: user.userName,
     usersEmail: user.email
   }
-
+  
   await orderModel.create(order).then(() => {
     res.json({message:"Order sent."})
   })
-  
-  
 });
 
-
+// ______________________________________________________________________________
 
 //TERMS OF USE PAGE
 
-app.get('/tos',(req,res) => {
+app.get('/tos', (req,res) => {
   res.sendFile(__dirname + '/public/tos.html')
   
 })
 
+//_______________________________________________________________________________
 
-////////////////////////////////////////////////////////////////////////////////
-function middleware(req,res,next){
+
+// All page
+
+app.get('/showOrders', async (req,res) => {
+  const orderPull = await orderModel.find({})
+  res.json({orderList: orderPull});
+});
+
+
+app.use((req, res, next) => {
   if(req.query.admin == 'true')
   next();
   else{
     res.status(400).send('ERROR!');
   }
   console.log('middleware works') ;
-}
-  
 
-////////////////////////////////////////////////////////////////////////////////
-
-
-// All page
-
-app.use(middleware);
+});
 
 app.get('/all', (req, res) => {
   res.sendFile(__dirname + '/public/all.html');
 });
 
-app.post('/all', async (req, res) =>{
-  console.log('dummy');
-});
 
-
-/////////////////////////////////////////////////
+//________________________________________________________________________________________________________
 
 
 
 
+//!fill up oreder collection
+// app.get('/testOrders', async (req,res) => {
+  
+  // const ordersHistory = [
+// {totalProducts: 5, totalPrice: 1200, usersName:"mish",usersEmail:"mish@4gmail.com"},
+// {totalProducts: 6, totalPrice: 1000, usersName:"mike",usersEmail:"mike@3walla.com"},
+// {totalProducts: 2, totalPrice: 120, usersName:"pavel",usersEmail:"pavel@2gmail.com"},
+// {totalProducts: 1, totalPrice: 250, usersName:"paul" ,usersEmail:"paul@1walla.com"},
+// ]
 
+// await orderModel.insertMany(ordersHistory);
 
+// });
+
+// ! fill up product collection
 // app.get('/addProducts', async (req,res) => {
   
   // const products =
   // [
-
-//   {productName:"Zara shirt", productPrice: 110, image:"http://t1.gstatic.com/images?q=tbn:ANd9GcTSUHCNcaXbt9OyWqUclRptJ_9MXv1kOs6leECCh8a-gN9lDonm"  },
-// {productName:"Gucci shirt", productPrice:650 , image:"https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1686932239/565806_XJAZY_9037_001_100_0000_Light-T-shirt-with-Gucci-Blade-print.jpg"},
-// {productName:"Louis vitton shirt", productPrice:750, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS1ywjJ2h5kKTV0Ty4TL71Hfo73vVD1ljq3Q&usqp=CAU"},
-// {productName:"Castro shirt", productPrice: 50, image:"https://cdn.speedsize.com/f685c8f2-fb72-4347-8237-384225b43882/https://www.castro.com/pub/media/catalog/product/cache/638ddee3296a44eae2e0ce5c49c2d017/8/6/8640347.01.0500-1647116393672908.jpg"},
+    
+    //   {productName:"Zara shirt", productPrice: 110, image:"http://t1.gstatic.com/images?q=tbn:ANd9GcTSUHCNcaXbt9OyWqUclRptJ_9MXv1kOs6leECCh8a-gN9lDonm"  },
+    // {productName:"Gucci shirt", productPrice:650 , image:"https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1686932239/565806_XJAZY_9037_001_100_0000_Light-T-shirt-with-Gucci-Blade-print.jpg"},
+    // {productName:"Louis vitton shirt", productPrice:750, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS1ywjJ2h5kKTV0Ty4TL71Hfo73vVD1ljq3Q&usqp=CAU"},
+    // {productName:"Castro shirt", productPrice: 50, image:"https://cdn.speedsize.com/f685c8f2-fb72-4347-8237-384225b43882/https://www.castro.com/pub/media/catalog/product/cache/638ddee3296a44eae2e0ce5c49c2d017/8/6/8640347.01.0500-1647116393672908.jpg"},
 
 // {productName:"CK belt", productPrice: 250, image:"https://xcdn.next.co.uk/COMMON/Items/Default/Default/ItemImages/AltItemShot/315x472/476898s.jpg"},
 // {productName:"LV belt", productPrice: 2300, image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-dopAGBc4Eq8wbLtwXT9kC5rgogdpKmkCPA&usqp=CAU"},
@@ -330,14 +321,3 @@ app.post('/all', async (req, res) =>{
 app.listen(3000, () => {
     console.log('running on port 3000')
 });
-
-    // עמוד ראשי (ערוץ '/'):
-
-    // עמוד הרשמה (/signup):
-
-// עמוד בחירת המוצרים (:(‘/products’
-
-// (‘/buy’) לחיצה על כפתור קניה, תעביר את המשתמש לעמוד הרכישה :
-
-// קיים ערוץ נוסף (‘/all’):
-

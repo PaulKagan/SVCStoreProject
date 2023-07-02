@@ -45,15 +45,14 @@ const sendOrder = ()=>{
     }).then(res => res.json())
     .then(data => {
 
-        const div = document.getElementById("");
+        const div = document.getElementById("confirm-container");
         const confirmDiv = document.createElement("div");
         confirmDiv.textContent = data.message;
         div.append(confirmDiv);
         sessionStorage.setItem('cart', JSON.stringify([]));
         setTimeout(() => {
             location.href = "/products";
-        },5000)
-        
+        },3500)
     });
 };
 

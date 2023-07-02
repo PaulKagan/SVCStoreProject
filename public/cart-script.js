@@ -20,7 +20,12 @@ const addToCart = (productName, productPrice) => {
     cartItems.push(itemToAdd);
     console.log(cartItems);
     sessionStorage.setItem('cart', JSON.stringify(cartItems));
-    // displayLilCart();
+    const empty = document.getElementById('empty');
+    // Check if cartContainerDiv is exists, and toggles it.
+    if (empty) {
+        empty.innerHTML ="";
+        displayLilCart();
+    }
 };
 
 

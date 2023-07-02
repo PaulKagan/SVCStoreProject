@@ -67,15 +67,9 @@ const sortItemsByPrice = () => {
     
             // Create a button element for "Add to Cart"
             const addToCartButton = document.createElement('button');
-            addToCartButton.classList.add("prod-buttom");
+            addToCartButton.classList.add("prod-button");
             addToCartButton.textContent = 'Add to Cart';
     
-            // Add an event listener to the button
-            //! implement it after cart.
-            // addToCartButton.addEventListener('onclick', function () {
-            //     // Add your logic for adding the product to the cart here
-            //     console.log('Product added to cart:', product.name);
-            // });
             addToCartButton.setAttribute('onclick', `addToCart('${product.productName}', ${product.productPrice})`);
     
             productDiv.appendChild(addToCartButton);
