@@ -86,9 +86,16 @@ input::placeholder{
 
 #checkline{
     color: aliceblue;
-    
+
 }
 
+.checkline{
+    color: #464d53;
+}
+
+.signHead{
+    color: azure;
+}
 
 
 /* //////////////////////////////////////////////  end of sign up*/
@@ -102,12 +109,16 @@ input::placeholder{
 #signIn{
     height: 500px;
     width: 500px;
-    background-color: rgba(0, 122, 163, 0.698);
+    /* background-color: rgba(0, 122, 163, 0.698); */
     margin: 20px auto;
+    background-color: rgba(143, 0, 0, 0.585);
+
 }
 
 #item{
-    background-color: rgba(179, 176, 176, 0.383);
+    /* background-color: rgba(179, 176, 176, 0.383); */
+    background-color: rgba(8, 10, 11, 0.878);
+
     height: 450px;
     width: 450px;
     border-radius: 20px;
@@ -126,6 +137,7 @@ input::placeholder{
 #header{
     text-align: center;
     padding-top: 30px;
+    color: aliceblue;
 }
 
 .smallHeader{
@@ -141,6 +153,7 @@ input::placeholder{
     width: 350px;
     border: 1px solid lightgray;
     padding: 0;
+    /* color: aliceblue; */
 }
 
 .inputs::placeholder{
@@ -150,17 +163,19 @@ input::placeholder{
 #submit{
     width: 350px;
     height: 30px;
-    background-color: rgb(0, 105, 21);
+    background-color: rgb(238, 0, 0);
     border: none;
     border-radius: 5px;
 }
 
 #submit:hover{
-    background-color: rgb(145, 49, 49);
+    
+    background-color: rgba(143, 0, 0, 0.585);
+
     cursor: pointer;
 }
 #submit:active{
-    background-color: gray;
+    background-color: rgb(85, 85, 87);
 }
 
 #forgot{
