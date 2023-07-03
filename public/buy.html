@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,15 +11,17 @@
 
 <div id="checkout">
     <div id="innercheck">
-        <h2>SV-CHECKOUT</h2>
+        <h2 class="checkline"> SV-CHECKOUT</h2>
         <br>
         <p id="p1">Total products:</p>
         <br>
         <p id="p2">Total price:</p>
 
+        <div id="buyButtonDiv">
         <button id="aproovebtn" onclick="return sendOrder()">approve</button>
 
-        <button onclick="return products()">Continue shopping</button>
+        <button id="locBtn" onclick="return products()">Continue shopping</button>
+    </div>
     </div>
 
 
