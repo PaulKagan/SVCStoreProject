@@ -18,18 +18,19 @@ button{
 #signUpDiv{
     width: 400px;
     height: 600px;
-    background-color: lightblue;
+    background-color: rgba(143, 0, 0, 0.585);
     margin: 20px auto;
     position: relative;
     
 }
 #items{
     width: 375px;
+    background-color: rgba(8, 10, 11, 0.878);
     height: 575px;
-    background-color: white;
     top: 12px;
     left: 12px;
     position: absolute;
+    border-radius: 10%;
 }
 
 #details{
@@ -70,18 +71,26 @@ input::placeholder{
     margin-top: 30px;
     height: 40px;
     width: 125px;
-    background-color: rgb(0, 179, 238);
+    background-color: rgb(238, 0, 0);
     border-style: none;
     color: white;
 }
 
 #button:hover{
     cursor: pointer;
-    background-color: green;
+    background-color: rgba(143, 0, 0, 0.585);
 }
 #button:active{
-    background-color: blue;
+    background-color: rgb(85, 85, 87);
 }
+
+#checkline{
+    color: aliceblue;
+    
+}
+
+
+
 /* //////////////////////////////////////////////  end of sign up*/
 
 
@@ -147,11 +156,11 @@ input::placeholder{
 }
 
 #submit:hover{
-    background-color: gray;
+    background-color: rgb(145, 49, 49);
     cursor: pointer;
 }
 #submit:active{
-    background-color: blue;
+    background-color: gray;
 }
 
 #forgot{
