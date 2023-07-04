@@ -82,6 +82,46 @@ const fillUp = async () => {
 
 };
 
+// _________________________________________________________________/
+ 
+const genErrorPage = (statusCode, message) => {
+    const htmlPage =
+    `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav>
+        <div id="logo" class="nav-items">SVShop</div>
+        <a id="home" class="nav-items" href="/products">Home</a>
+    </nav>
+    <div id="errDivContainer">
+        <div id="errDiv">
+            <p>Error ${statusCode}!</p>
+            <p>${message}</p>
+        </div>
+    </div>
+</body>
+</html>
+    
+    `;
+
+    return htmlPage;
+}
+
+const createError = (statusCode, message) => {
+    const error = new Error(message);
+    error.statusCode = statusCode;
+    return error;
+}
+
+
 module.exports = {
-    fillUp
+    fillUp, genErrorPage, createError
 };

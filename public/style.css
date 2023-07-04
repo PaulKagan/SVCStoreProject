@@ -565,11 +565,22 @@ nav{
     text-align: center;
 }
 
+/* Error page*/
+#errDivContainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#errDiv{
+    background-color: white;
+    padding: 5vh 7vw;
+    /* width: 15vw;
+    height: 15vh; */
+}
+
 @media(max-width:768px){
-    .nav-items{
-        display: none;
-    }
-    #logo{
-        display: inline;
-    }
+    
 }

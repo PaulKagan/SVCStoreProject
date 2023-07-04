@@ -2,51 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-        <!-- navbar -->
-        <nav>
-            <div id="logo" class="nav-items">SVShop</div>
-            <a id="home" class="nav-items" src="/products">Home</a>
-            <button id="cart-button" class="nav-items" onclick="getLilCart()">Cart</button>
-            <span id="empty"></span>
-            <input type="search" name="" id="search-bar" class="nav-items" placeholder="Search">
+  <!-- navbar -->
+  <nav>
+    <div id="logo" class="nav-items">SVShop</div>
+    <a id="home" class="nav-items" href="/products">Home</a>
+    <button id="cart-button" class="nav-items" onclick="getLilCart()">Cart</button>
+    <span id="empty"></span>
+    <input type="search" name="" id="search-bar" class="nav-items" placeholder="Search">
+  </nav>
 
-           
-         </nav>
-        <div id="welcomHeader">
-      <h1>Welcome to SV-clothing shop!</h1>
-    </div>
+  <div id="welcomHeader">
+    <h1>Welcome to SV-clothing shop!</h1>
+  </div>
 
-    <div id="sortDiv">
+  <div id="sortDiv">
     <select id="sortBox">
-        <option value="default">Sort by</option>
-        <option onclick="sortItemsByPrice()" value="lowToHigh">Price: Low to High</option>
-        <option onclick="sortItemsByPrice()" value="highToLow">Price: High to Low</option>
-      </select>
-    </div>
-      <div id="productContainer">
-        <!-- Product items will be dynamically added here -->
-      </div>
-
-    
-
-    <div id="product-list"></div>
+      <option value="default">Sort by</option>
+      <option onclick="sortItemsByPrice()" value="lowToHigh">Price: Low to High</option>
+      <option onclick="sortItemsByPrice()" value="highToLow">Price: High to Low</option>
+    </select>
+  </div>
+  <div id="productContainer">
+    <!-- Product items will be dynamically added here -->
+  </div>
 
 
+
+  <div id="product-list"></div>
 
 
 
 
 
-    <script src="product-script.js"></script>
-    <script src="script.js"></script>
-    <script src="cart-script.js"></script>
+
+
+  <script src="product-script.js"></script>
+  <script src="script.js"></script>
+  <script src="cart-script.js"></script>
 
 </body>
 

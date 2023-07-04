@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <!-- navbar -->
+    <nav>
+        <div id="logo" class="nav-items">SVShop</div>
+        <a id="home" class="nav-items" href="/products">Home</a>
+        <button id="cart-button" class="nav-items" onclick="getLilCart()">Cart</button>
+        <span id="empty"></span>
+    </nav>
 
-<div id="checkout">
-    <div id="innercheck">
-        <h2 class="checkline"> SV-CHECKOUT</h2>
-        <br>
-        <p id="p1">Total products:</p>
-        <br>
-        <p id="p2">Total price:</p>
+    <div id="checkout">
+        <div id="innercheck">
+            <h2 class="checkline"> SV-CHECKOUT</h2>
+            <br>
+            <p id="p1">Total products:</p>
+            <br>
+            <p id="p2">Total price:</p>
 
-        <div id="buyButtonDiv">
-        <button id="aproovebtn" onclick="return sendOrder()">approve</button>
+            <div id="buyButtonDiv">
+                <button id="aproovebtn" onclick="return sendOrder()">approve</button>
 
-        <button id="locBtn" onclick="return products()">Continue shopping</button>
+                <button id="locBtn" onclick="return products()">Continue shopping</button>
+            </div>
+        </div>
+
+
     </div>
-    </div>
+    <br><br><br>
+    <div id="confirm-container"></div>
+    <!-- finish him!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
-
-</div>
-<br><br><br>
-<div id="confirm-container"></div>
-<!-- finish him!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-<script src="cart-script.js"></script>
-<script src="checkout-script.js"></script>
+    <script src="cart-script.js"></script>
+    <script src="checkout-script.js"></script>
 </body>
+
 </html>
