@@ -173,10 +173,6 @@ input::placeholder{
     background-color: rgb(85, 85, 87);
 }
 
-#forgot{
-    text-align: right;
-    color: aliceblue    
-}
 
 .eyeIns{
     cursor: pointer;
@@ -189,51 +185,6 @@ input::placeholder{
 }
 
 
-/* ___Forgot password page_____________ */
-
-#forgotDiv{
-
-
-    width: 500px;
-    height: 400px;
-    background-color: rgba(8, 10, 11, 0.878);
-    margin: 20px auto;
-    position: relative;
-    
-}
-
-#innerF{
-    margin-left: 30px;
-    margin-top: 10px;
-    justify-items: auto;
-    width: 350px;
-    height: 300px;
-    background-color: rgba(143, 0, 0, 0.585);
-    top: 12px;
-    left: 12px;
-    position: absolute;
-    padding-left: 55px;
-    padding-top: 50px;
-}
-
-.pColor{
-    color: antiquewhite;
-}
-
-#changeBtn{
-    width: 150px;
-    height: 30px;
-    background-color: rgb(238, 0, 0);
-    border: none;
-    border-radius: 5px;
-}
-
-#changeBtn:hover{
-
-    background-color: rgba(143, 0, 0, 0.585);
-
-
-}
 /* ___TOS page_____________________________ */
 /* _______________________________________ */
 
@@ -582,5 +533,15 @@ nav{
 }
 
 @media(max-width:768px){
+    #welcomHeader,#home,#logo{
+        display: none;
+    }
+    #search-bar:placeholder-shown{
+        padding-left: 1px;
+    }
+    #search-bar{
+        width: 80px;
+        margin-right: 2px;
+    }
     
 }
