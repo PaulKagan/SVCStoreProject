@@ -543,5 +543,11 @@ nav{
         width: 80px;
         margin-right: 2px;
     }
+
+    .productContainerDiv{
+        width: 200px;
+        height: 150px;
+    }
+    
     
 }
