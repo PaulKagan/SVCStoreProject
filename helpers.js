@@ -1,8 +1,9 @@
+const server = require('./server');
 
 const fillUp = async () => {
     const db = require('mongoose');
 
-    const url = "mongodb+srv://pkagan:mdbpw123@cluster0.wsme1wo.mongodb.net/SVCShop";
+    const url = server.url;
 
     db.connect(url)
         .then(() => {

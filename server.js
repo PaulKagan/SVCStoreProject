@@ -290,7 +290,10 @@ app.use((error, req, res, next) => {
   res.status(error.statusCode).send(helper.genErrorPage(error.statusCode, error.message));
 });
 
-
+//___Export________________________________________________________________________________________________
+module.exports = {
+  url
+}
 
 // ________________________________________________________________________________________________________
 
